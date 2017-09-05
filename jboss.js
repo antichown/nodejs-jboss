@@ -8,6 +8,7 @@ var arraysite = fs.readFileSync(process.argv[2],"utf8").toString().split("\n");
 arraysite.forEach(function(usesite) {
 
 		try {
+			
         var options = {
             url: usesite+"/admin-console/login.seam",
             method: 'GET',
@@ -21,6 +22,9 @@ arraysite.forEach(function(usesite) {
         };
         var ilkcookie=""
         request.get("http://"+usesite+"/admin-console/login.seam",function(err,res,body){
+			
+        	if(!err) {
+				
 			
 			var cookiesi=res.headers['set-cookie'];
 			
@@ -77,8 +81,11 @@ arraysite.forEach(function(usesite) {
 
                 });
             
-            
+        }
+        
+        
         });
+
 
 	
 	}catch(err) {
